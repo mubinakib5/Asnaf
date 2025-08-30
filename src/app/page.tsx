@@ -1,103 +1,159 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Download, Mail, ArrowRight, MapPin, GraduationCap } from "lucide-react";
+
+import { personalInfo } from "@/data";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="section-padding bg-gradient-to-br from-background via-background to-muted/20">
+        <div className="container">
+          <div className="mx-auto max-w-4xl text-center space-y-8 animate-fade-in">
+            {/* Profile Image Placeholder */}
+            <div className="mx-auto h-32 w-32 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center text-4xl font-bold text-primary-foreground">
+              AH
+            </div>
+            
+            {/* Name and Title */}
+            <div className="space-y-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+                {personalInfo.name}
+              </h1>
+              <p className="text-xl sm:text-2xl text-muted-foreground font-medium">
+                {personalInfo.title}
+              </p>
+            </div>
+            
+            {/* Value Statement */}
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              {personalInfo.valueStatement}
+            </p>
+            
+            {/* Quick Stats */}
+            <div className="flex flex-wrap justify-center gap-4 pt-4">
+              <Badge variant="secondary" className="px-4 py-2">
+                <GraduationCap className="h-4 w-4 mr-2" />
+                CGPA: {personalInfo.profileStats.cgpa}
+              </Badge>
+              <Badge variant="secondary" className="px-4 py-2">
+                <MapPin className="h-4 w-4 mr-2" />
+                {personalInfo.location}
+              </Badge>
+            </div>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+              <Button asChild size="lg" className="text-base">
+                <Link href="/cv">
+                  <Download className="h-5 w-5 mr-2" />
+                  Download CV
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="text-base">
+                <Link href="/contact">
+                  <Mail className="h-5 w-5 mr-2" />
+                  Contact Me
+                </Link>
+              </Button>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+      
+      {/* Quick Overview Section */}
+      <section className="section-padding">
+        <div className="container">
+          <div className="mx-auto max-w-6xl">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">Overview</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Explore my academic journey, research interests, and professional projects in water resources engineering.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Card className="group hover:shadow-lg transition-all duration-300 cursor-pointer">
+                <Link href="/research">
+                  <CardContent className="p-6 text-center">
+                    <div className="h-12 w-12 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <GraduationCap className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="font-semibold mb-2">Research</h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      Thesis and research interests in hydraulic modeling and flood risk assessment.
+                    </p>
+                    <div className="flex items-center justify-center text-sm text-primary group-hover:text-primary/80">
+                      Learn more <ArrowRight className="h-4 w-4 ml-1" />
+                    </div>
+                  </CardContent>
+                </Link>
+              </Card>
+              
+              <Card className="group hover:shadow-lg transition-all duration-300 cursor-pointer">
+                <Link href="/projects">
+                  <CardContent className="p-6 text-center">
+                    <div className="h-12 w-12 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <div className="h-6 w-6 bg-primary rounded-sm" />
+                    </div>
+                    <h3 className="font-semibold mb-2">Projects</h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      Academic and industry projects including EIA studies and GIS applications.
+                    </p>
+                    <div className="flex items-center justify-center text-sm text-primary group-hover:text-primary/80">
+                      View projects <ArrowRight className="h-4 w-4 ml-1" />
+                    </div>
+                  </CardContent>
+                </Link>
+              </Card>
+              
+              <Card className="group hover:shadow-lg transition-all duration-300 cursor-pointer">
+                <Link href="/skills">
+                  <CardContent className="p-6 text-center">
+                    <div className="h-12 w-12 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <div className="grid grid-cols-2 gap-1">
+                        <div className="h-2 w-2 bg-primary rounded-full" />
+                        <div className="h-2 w-2 bg-primary/60 rounded-full" />
+                        <div className="h-2 w-2 bg-primary/60 rounded-full" />
+                        <div className="h-2 w-2 bg-primary rounded-full" />
+                      </div>
+                    </div>
+                    <h3 className="font-semibold mb-2">Skills</h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      Technical expertise in HEC-RAS, GIS, programming, and engineering software.
+                    </p>
+                    <div className="flex items-center justify-center text-sm text-primary group-hover:text-primary/80">
+                      View skills <ArrowRight className="h-4 w-4 ml-1" />
+                    </div>
+                  </CardContent>
+                </Link>
+              </Card>
+              
+              <Card className="group hover:shadow-lg transition-all duration-300 cursor-pointer">
+                <Link href="/training">
+                  <CardContent className="p-6 text-center">
+                    <div className="h-12 w-12 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <div className="h-6 w-6 border-2 border-primary rounded-full flex items-center justify-center">
+                        <div className="h-2 w-2 bg-primary rounded-full" />
+                      </div>
+                    </div>
+                    <h3 className="font-semibold mb-2">Training</h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      Industrial training experience at Bangladesh Water Development Board.
+                    </p>
+                    <div className="flex items-center justify-center text-sm text-primary group-hover:text-primary/80">
+                      View experience <ArrowRight className="h-4 w-4 ml-1" />
+                    </div>
+                  </CardContent>
+                </Link>
+              </Card>
+            </div>
+          </div>
+         </div>
+       </section>
+     </div>
   );
 }
